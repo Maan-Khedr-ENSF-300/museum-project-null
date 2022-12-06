@@ -2,6 +2,24 @@ DROP DATABASE IF EXISTS ARTSMUSEUM;
 CREATE DATABASE ARTSMUSEUM;
 USE ARTSMUSEUM;
 
+CREATE TABLE ARTIST(
+    Name                VARCHAR(50) NOT NULL,
+    BirthDate           DATE,
+    DeathDate           DATE,
+    CountryOfOrigin     VARCHAR(50),
+    Epoch               VARCHAR(50),
+    MainStyle           VARCHAR(50),
+    Description         VARCHAR(500),
+    PRIMARY KEY (Name)
+);
+
+CREATE TABLE EXHIBITIONS(
+    Name                VARCHAR(50) NOT NULL,
+    StartDate           DATE,
+    EndDate             DATE,
+    PRIMARY KEY (Name)
+);
+
 CREATE TABLE ART_OBJECTS(
     ID_no               VARCHAR(40) NOT NULL,
     Artist              VARCHAR(100),
@@ -10,7 +28,10 @@ CREATE TABLE ART_OBJECTS(
     Description         VARCHAR(500),
     CountryOfOrigin     VARCHAR(40),
     Epoch               VARCHAR(40),
-    PRIMARY KEY (ID_no)
+    Exhibit             VARCHAR(50),
+    PRIMARY KEY (ID_no),
+    FOREIGN KEY (Exhibit) REFERENCES EXHIBITIONS(Name),
+    FOREIGN KEY (Artist) REFERENCES ARTIST(Name)
 
 );
 
@@ -33,7 +54,6 @@ CREATE TABLE STATUE(
     FOREIGN KEY (ID_no) REFERENCES ART_OBJECTS(ID_no)
 );
 
-
 CREATE TABLE SCULPTURE(
     ID_no               VARCHAR(40) NOT NULL,
     Material            VARCHAR(50),
@@ -43,7 +63,6 @@ CREATE TABLE SCULPTURE(
     PRIMARY KEY (ID_no),
     FOREIGN KEY (ID_no) REFERENCES ART_OBJECTS(ID_no)
 );
-
 
 CREATE TABLE OTHER(
     ID_no               VARCHAR(40) NOT NULL,
@@ -62,15 +81,6 @@ CREATE TABLE PERMANENT_COLLECTION(
     FOREIGN KEY (ID_no) REFERENCES ART_OBJECTS(ID_no)
 );
 
-CREATE TABLE BORROWED(
-    ID_no               VARCHAR(40) NOT NULL,
-    CollectionName      VARCHAR(50) NOT NULL,
-    DateBorrowed        DATE,
-    DateReturned        DATE,
-    PRIMARY KEY (ID_no),
-    FOREIGN KEY (ID_no) REFERENCES ART_OBJECTS(ID_no)
-);
-
 CREATE TABLE COLLECTIONS(
     Name                VARCHAR(50) NOT NULL,
     Type                VARCHAR(50),
@@ -81,24 +91,12 @@ CREATE TABLE COLLECTIONS(
     PRIMARY KEY (Name)
 );
 
--- ALTER TABLE COLLECTIONS
--- ADD foreign key (Name) references BORROWED(CollectionName);
-
-
-CREATE TABLE EXHIBITIONS(
-    Name                VARCHAR(50) NOT NULL,
-    StartDate           DATE,
-    EndDate             DATE,
-    PRIMARY KEY (Name)
+CREATE TABLE BORROWED(
+    ID_no               VARCHAR(40) NOT NULL,
+    CollectionName      VARCHAR(50) NOT NULL,
+    DateBorrowed        DATE,
+    DateReturned        DATE,
+    PRIMARY KEY (ID_no),
+    FOREIGN KEY (ID_no) REFERENCES ART_OBJECTS(ID_no),
+    FOREIGN KEY (CollectionName) REFERENCES COLLECTIONS(Name)
 );
-
-CREATE TABLE ARTIST(
-    Name                VARCHAR(50) NOT NULL,
-    BirthDate           DATE,
-    DeathDate           DATE,
-    CountryOfOrigin     VARCHAR(50),
-    Epoch               VARCHAR(50),
-    MainStyle           VARCHAR(50),
-    Description         VARCHAR(500),
-    PRIMARY KEY (Name)
-)
