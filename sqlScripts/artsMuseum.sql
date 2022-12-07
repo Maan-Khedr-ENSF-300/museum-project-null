@@ -15,7 +15,7 @@ CREATE TABLE ARTIST(
 
 INSERT INTO ARTIST(Name, BirthDate, DeathDate, CountryofOrigin, Epoch, Mainstyle, Description)
 VALUES
-('Benedetto da Rovezzano', 1474 , 1554, 'Italian', 'Renaissance', 'Sculptor', 'Italian architect and sculptor who worked mainly in Florence.')
+('Benedetto da Rovezzano', 1474 , 1554, 'Italian', 'Renaissance', 'Sculptor', 'Italian architect and sculptor who worked mainly in Florence.'),
 ('Michiel Sittow', 1468, 1525, 'Estonian','Early Netherlandish', 'Painting, portraits','For most of his life, Sittow worked as a court portrait painter, for Isabella of Castile, the Habsburgs and other prominent royal houses in Spain and Netherlands.'),
 ('Samuel van Hoogstraten',1627, 1678, 'Dutch,Dordrecht', 'Golden Age', 'Painting', 'Specialized in the quodlibet(Latin for “whatever you please”), a seemingly random assortment of objects that typically contains verbal and visual criticism about art, artists, patrons, and politics.'),
 ('David Drake', 1801, 1870, 'American','Anno Domini','Stonework',NULL),
@@ -31,13 +31,15 @@ CREATE TABLE EXHIBITIONS(
     PRIMARY KEY (Name)
 );
 
-('The Tudors: Art and Majesty in Renaissance England', October 10 2022, January 8,2023),
-('Cubism and the Trompe I’Oeil Tradition',October 20 2022, January 22, 2023),
-('Hear Me Now: The Black Potters of Old Edgefield, South Carolina', September 9 2022, February 5, 2023),
-('Figure of the artist, Richelieu', September 26 2019, June 30 2021 ),
-('Sculptor of the Englightenment, Los Angeles', November 4 2003, January 25 2004),
-('Babylon, Napoleon, Temporary Exhibition under the pyramid', March 14 2008, June 2 2008),
-('Champollion the path of hieroglyphs, Louve-Lens', September 28 2022, January 16 2023);
+INSERT INTO EXHIBITIONS(Name,StartDate,EndDate)
+VALUES
+('The Tudors: Art and Majesty in Renaissance England', 2022-10-10, 2023-01-08),
+('Cubism and the Trompe I’Oeil Tradition',2022-10-20, 2023-01-22),
+('Hear Me Now: The Black Potters of Old Edgefield, South Carolina', 2022-09-09, 2023-02-05),
+('Figure of the artist, Richelieu',2019-09-26, 2021-06-30),
+('Sculptor of the Englightenment, Los Angeles',2003-11-04, 2004-01-25),
+('Babylon, Napoleon, Temporary Exhibition under the pyramid', 2008-03-14, 2008-06-02),
+('Champollion the path of hieroglyphs, Louve-Lens', 2022-09-28, 2023-01-16);
 
 CREATE TABLE ART_OBJECTS(
     ID_no               VARCHAR(40) NOT NULL,
@@ -56,11 +58,11 @@ CREATE TABLE ART_OBJECTS(
 
 INSERT INTO ART_OBJECTS(ID_no, Artist, Year, Title, Description, CountryofOrigin, Epoch, Exhibit)
 VALUES
-('1','Benedetto da Rovezzano',1524-29,'Angel Bearing Candlestick','Bronze angels nearing candlesticks. Bronzes statuettes of this kind were often housed alongside antique examples by wealthy collectors.', 'Italian', 'Renaissance', 'The Tudors: Art and Majesty in Renaissance England'),
+('1','Benedetto da Rovezzano',1529,'Angel Bearing Candlestick','Bronze angels nearing candlesticks. Bronzes statuettes of this kind were often housed alongside antique examples by wealthy collectors.', 'Italian', 'Renaissance', 'The Tudors: Art and Majesty in Renaissance England'),
 ('2','Michiel Sittow',1514,'Mary Tudor, Later Queen of France and Duchess of Suffolk','Portrait Painting of Mary Tudor','Estonian', '2nd Millennium','The Tudors: Art and Majesty in Renaissance England'),
-('3','Samuel van Hoogstraten',1666-1678,'Trompe I’Oeil Still Life','This conceit required marvelous fidelity to the textures and scale of the items depicted, even so, the frame proclaims the entirety to be a painting.','Dutch, Dordrecht','Anno Domini','Cubism and the Trompe I’Oeil Tradition'),
+('3','Samuel van Hoogstraten',1678,'Trompe I’Oeil Still Life','This conceit required marvelous fidelity to the textures and scale of the items depicted, even so, the frame proclaims the entirety to be a painting.','Dutch, Dordrecht','Anno Domini','Cubism and the Trompe I’Oeil Tradition'),
 ('4','David Drake',1853,'Jug','Manufactured by Stony Bluff Manufactory','American','Victorian Era','Hear Me Now: The Black Potters of Old Edgefield, South Carolina'),
-('5','Lucas de Heere',1595-1600,'Allegory of the Tudor Dynasty','Displays Henry VIII, the founder of the Church of England, passing the sword of justice to the Protestant Edward VI.','Netherlandish, Grent','English Reformation','The Tudors: Art and Majesty in Renaissance England'),
+('5','Lucas de Heere',1600,'Allegory of the Tudor Dynasty','Displays Henry VIII, the founder of the Church of England, passing the sword of justice to the Protestant Edward VI.','Netherlandish, Grent','English Reformation','The Tudors: Art and Majesty in Renaissance England'),
 ('6','Louise-Elisabeth Vigee-Le Brun',1786,'Madame Vigee-Le Brun and her daughter, Jeanne-Lucie-Louise,known as Julie','Portrait of Madame Vigee-Le Brun holding her daughter','France','4th quarter of the 18th century','Figure of the artist,Richelieu'),
 ('7','Jean Antoine Houdon',1777,'Louise Brongniart daughter of the architect Alexandre Theodore Brongniart', 'France','American Revolution','Sculptor of the Englightenment, Los Angeles'),
 ('8','David Drake', 1866,'Fragment','Manufactured by Stony Bluff Manufactory','American','Common Era','Hear Me Now: The Black Potters of Old Edgefield, South Carolina'),
@@ -137,12 +139,12 @@ CREATE TABLE PERMANENT_COLLECTION(
 
 INSERT INTO PERMANENT_COLLECTION(ID_no, DateAcquired, Status, Cost)
 VALUES
-('1',January 5 2019, 'on display', 10000),
-('2',November 28 2008, 'on display', 15800),
-('3',June 16 2012,'on loan', 26000 ),
-('4',December 10 2013,'stored', 60000),
-('5',February 18 2018, 'on loan',5800),
-('8',May 30 2004, 'stored', 5500);
+('1',2019-01-05, 'on display', 10.0),
+('2',2008-11-28, 'on display', 15.8),
+('3',2012-06-16,'on loan', 2.6 ),
+('4',2013-12-10,'stored', 60.1),
+('5',2018-02-18, 'on loan',5.8),
+('8',2004-05-30, 'stored', 6.9);
 
 CREATE TABLE COLLECTIONS(
     Name                VARCHAR(50) NOT NULL,
@@ -172,7 +174,7 @@ CREATE TABLE BORROWED(
 
 INSERT INTO BORROWED (ID_no, CollectionName, DateBorrowed, DateReturned)
 VALUES
-('6','The Art of Partraiture', January 24 2019, April 28 2019),
-('7','The Art of Partraiture', September 15 2021, December 15 2022),
-('9','Masterpieces of the Louvre', October 30 2016, January 30 2017),
-('10','Queen, Kings, and Emperors', May 2 2010, August 31 2012);
+('6','The Art of Partraiture', 2019-01-24, 2019-04-28),
+('7','The Art of Partraiture', 2021-09-15, 2022-12-15),
+('9','Masterpieces of the Louvre',2016-10-30, 2017-01-30),
+('10','Queen, Kings, and Emperors', 2010-05-02, 2012-08-31);
