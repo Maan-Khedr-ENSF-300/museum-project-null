@@ -169,7 +169,7 @@ CREATE TABLE BORROWED(
     DateReturned        DATE,
     PRIMARY KEY (ID_no),
     FOREIGN KEY (ID_no) REFERENCES ART_OBJECTS(ID_no),
-    FOREIGN KEY (CollectionName) REFERENCES COLLECTIONS(Name)
+    FOREIGN KEY (CollectionName) REFERENCES COLLECTIONS(Name) ON DELETE SET NULL
 );
 
 INSERT INTO BORROWED (ID_no, CollectionName, DateBorrowed, DateReturned)
