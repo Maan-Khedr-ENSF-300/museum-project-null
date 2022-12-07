@@ -4,8 +4,8 @@ USE ARTSMUSEUM;
 
 CREATE TABLE ARTIST(
     Name                VARCHAR(50) NOT NULL,
-    BirthDate           DATE,
-    DeathDate           DATE,
+    BirthYear           YEAR,
+    DeathYear           YEAR,
     CountryOfOrigin     VARCHAR(50),
     Epoch               VARCHAR(50),
     MainStyle           VARCHAR(50),
