@@ -169,7 +169,7 @@ CREATE TABLE BORROWED(
     DateReturned        DATE,
     PRIMARY KEY (ID_no),
     FOREIGN KEY (ID_no) REFERENCES ART_OBJECTS(ID_no),
-    FOREIGN KEY (CollectionName) REFERENCES COLLECTIONS(Name) ON DELETE SET NULL
+    FOREIGN KEY (CollectionName) REFERENCES COLLECTIONS(Name) ON DELETE CASCADE
 );
 
 INSERT INTO BORROWED (ID_no, CollectionName, DateBorrowed, DateReturned)
@@ -178,3 +178,8 @@ VALUES
 ('7','The Art of Portraiture', '2021-09-15', '2022-12-15'),
 ('9','Masterpieces of the Louvre','2016-10-30', '2017-01-30'),
 ('10','Queen, Kings, and Emperors', '2010-05-02', '2012-08-31');
+
+CREATE TABLE COLLECTION_ARCHIVES(
+	CollectionName				VARCHAR(50),
+    CollectionType				VARCHAR(50)
+);
