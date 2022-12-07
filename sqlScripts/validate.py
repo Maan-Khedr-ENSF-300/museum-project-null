@@ -11,3 +11,9 @@ def validateCredentials(username, pword) -> bool:
         else:
             raise error
     return True
+
+def validateMenuOption(main_menu):
+    options = ["1","2"]
+    if main_menu in options:
+        return True
+    return False

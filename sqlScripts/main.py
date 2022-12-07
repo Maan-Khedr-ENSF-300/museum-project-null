@@ -12,3 +12,10 @@ def main():
         valid_credentials = validateCredentials(user, password)
 
     main_menu = input("\n1.\tManage Art Objects\n2.\tUser Management")
+    valid_option = validateMenuOption(main_menu)
+    while not valid_option:
+        print("Invalid input. Please select from the following options:")
+        main_menu = input("\n1.\tManage Art Objects\n2.\tUser Management")
+        valid_option = validateMenuOption(main_menu)
+
+    
