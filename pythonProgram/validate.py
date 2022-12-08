@@ -40,3 +40,16 @@ def validateSubOption(sub_option):
     if sub_option.lower() in options:
         return True
     return False
+
+
+def validateSqlInput(user_inp):
+    if len(user_inp.split(' ')) <= 1:
+        try:
+            open(user_inp, 'r')
+        except Exception as e:
+            if "No such file or directory:" in str(e):
+                print("Invalid directory.\n")
+                return False
+            else:
+                raise e
+    return True
