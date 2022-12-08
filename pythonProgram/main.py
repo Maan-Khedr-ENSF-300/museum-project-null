@@ -1,5 +1,6 @@
 from validate import *
 from getpass import getpass
+from queryClass import *
 
 
 def main():
@@ -19,6 +20,20 @@ def main():
         while not validate_schema:
             user_schema = input("Enter the name of the database to use: ")
             validate_schema = validateSchema(user, password, user_schema)
+        user_query = input(
+            "Enter your SQL in the terminal or the file directory where your SQL is located:\n")
+        while not validateSqlInput(user_query):
+            user_query = input(
+                "Enter your SQL in the terminal or the file directory where your SQL is located:\n")
+        sql_file = user_query
+        if len(user_query.split(' ')) <= 1:
+            file_p = open(user_query, 'r')
+
+            sql_file = file_p.read()
+            file_p.close()
+        obj = QueryBuilder(user, password, user_schema)
+        obj.adminQuery(sql_file)
+
     else:
         print(f'Selection "{user_type}" is invalid.')
 
