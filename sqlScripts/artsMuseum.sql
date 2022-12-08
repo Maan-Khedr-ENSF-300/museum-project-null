@@ -183,3 +183,15 @@ CREATE TABLE COLLECTION_ARCHIVES(
 	CollectionName				VARCHAR(50),
     CollectionType				VARCHAR(50)
 );
+
+DROP ROLE IF EXISTS read_access@localhost;
+DROP USER IF EXISTS guest@localhost;
+
+CREATE ROLE read_access@localhost;
+CREATE USER guest@localhost;
+
+GRANT SELECT ON artsmuseum.* TO read_access@localhost;
+GRANT read_access@localhost TO guest@localhost;
+
+SET DEFAULT ROLE ALL TO guest@localhost;
+
