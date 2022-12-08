@@ -28,20 +28,6 @@ def validateSchema(username, pword, db):
     return True
 
 
-def validateMenuOption(main_menu):
-    options = ["1", "2"]
-    if main_menu in options:
-        return True
-    return False
-
-
-def validateSubOption(sub_option):
-    options = ["a", "b"]
-    if sub_option.lower() in options:
-        return True
-    return False
-
-
 def validateSqlInput(user_inp):
     if len(user_inp.split(' ')) <= 1:
         try:
